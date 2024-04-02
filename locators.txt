@@ -1,0 +1,8 @@
+#Main Page
+
+login.link = .//a[@class='login__link']
+login.name = .//input[@name='username']
+login.password = .//input[@name='password']
+login.button = .//button[@type='submit']
+login.logout = .//a[@class='login__popup-item login__popup-item_exit']
+
