@@ -36,7 +36,7 @@ public class LoginTestAllActionInOneClass {
     private boolean isButtonSignOutDisplayed() {
         try {
             boolean state = webDriver.findElement(By.xpath(".//a[@class='login__popup-item login__popup-item_exit']")).isDisplayed();
-            logger.info(state + " is button displayed");
+            logger.info(state + " Sign Out is displayed");
             return state;
         }catch (Exception e) {
             logger.info("Element is not visible");
@@ -45,7 +45,7 @@ public class LoginTestAllActionInOneClass {
         }
         private boolean isButtonSignInDisplayed() {
             try {
-                boolean state = webDriver.findElement(By.xpath(".//div[@class='login__link']")).isDisplayed();
+                boolean state = webDriver.findElement(By.xpath(".//a[@class='login__link']")).isDisplayed();
                 logger.info(state + " is button displayed");
                 return state;
             } catch (Exception e) {
@@ -80,7 +80,7 @@ public class LoginTestAllActionInOneClass {
         webDriver.findElement(By.xpath(".//div[@class='header__login login']")).click();
         logger.info("Button Sign In was found");
 
-        Assert.assertTrue("Button Sign In is not visible ", isButtonSignInDisplayed());
+        Assert.assertFalse("Button Sign In is not visible ", isButtonSignInDisplayed());
         Assert.assertTrue("Button Sing out is visible", isButtonSignOutDisplayed());
     }
 }
