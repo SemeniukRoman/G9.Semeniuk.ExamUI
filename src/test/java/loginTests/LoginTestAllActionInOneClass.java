@@ -1,5 +1,6 @@
 package loginTests;
 
+import data.TestData;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.log4j.Logger;
 import org.junit.After;
@@ -65,13 +66,13 @@ public class LoginTestAllActionInOneClass {
         WebElement inputUserNameLoginForm =
                 webDriver.findElement(By.xpath(".//input[@name='username']"));
         inputUserNameLoginForm.clear();
-        inputUserNameLoginForm.sendKeys("Testerenko");
-        logger.info("'Testerenko' was inputted into input UserName");
+        inputUserNameLoginForm.sendKeys(TestData.VALID_LOGIN_UI);
+        logger.info("Login was inputted into input UserName");
 
         WebElement inputPasswordLoginForm =
                 webDriver.findElement((By.xpath(".//input[@name='password']")));
         inputPasswordLoginForm.clear();
-        inputPasswordLoginForm.sendKeys("Test12345");
+        inputPasswordLoginForm.sendKeys(TestData.VALID_PASSWORD_UI);
         logger.info("Password was inputted into input Password");
 
         webDriver.findElement(By.xpath(".//button[@type='submit']")).click();
@@ -80,7 +81,7 @@ public class LoginTestAllActionInOneClass {
         webDriver.findElement(By.xpath(".//div[@class='header__login login']")).click();
         logger.info("Button Sign In was found");
 
-        Assert.assertFalse("Button Sign In is not visible ", isButtonSignInDisplayed());
-        Assert.assertTrue("Button Sing out is visible", isButtonSignOutDisplayed());
+        Assert.assertFalse("Button Sign In is not visible", isButtonSignInDisplayed());
+        Assert.assertTrue("Button Sing Out is visible", isButtonSignOutDisplayed());
     }
 }
