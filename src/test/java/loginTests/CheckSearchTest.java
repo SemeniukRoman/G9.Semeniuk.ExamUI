@@ -6,7 +6,7 @@ import org.junit.Test;
 public class CheckSearchTest extends BaseTest {
 
     @Test
-    public void TC_004_changeLanguageTest() {
+    public void TC_005_checkSearchTest() {
         pageProvider.getHomePage().openHomePage();
         pageProvider.getLoginPage().closeCookiePopup();
 
