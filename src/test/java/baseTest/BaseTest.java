@@ -35,8 +35,6 @@ public class BaseTest {
     @Before
     public void setUp(){
         logger.info("-----" + testName.getMethodName() + " was started-----");
-        // WebDriverManager.chromedriver().setup(); // скачує виконуваний файл
-        // webDriver = new ChromeDriver();
         webDriver = initDriver();
         webDriver.manage().window().maximize();
         webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
@@ -46,8 +44,6 @@ public class BaseTest {
 
     @After
     public void tearDown(){
-//        webDriver.quit();
-//        logger.info("Browser was closed");
         logger.info("-----" + testName.getMethodName() + " was finished-----");
     }
 
@@ -113,9 +109,4 @@ public class BaseTest {
 
     };
 
-    protected void takeScreenshot(String screenShotName) {
-        System.out.println("screenshot was taken");
-        byte[] screen = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.BYTES);
-        listOfScreenShots.add(new ScreenShot(screenShotName, screen));
-    }
 }
