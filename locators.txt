@@ -6,11 +6,31 @@ login.link = .//a[@class='login__link']
 
 #Login Page
 
-login.name = .//input[@name='username']
-login.password = .//input[@name='password']
-login.button = .//button[@type='submit']
-login.logout = .//a[@class='login__popup-item login__popup-item_exit']
+loginLink = //a[@class='login__link']
+buttonSignIn = //button[@type='submit']
+inputUserNameLoginForm = .//input[@name='username']
+inputPasswordLoginForm = //input[@name='password']
 
 ---------------------------------------------------------------------
 
+#Home Page
+
+settingsItem = //a[contains(@href, 'settings')]
+userIcon = //div[@class='login__link']
+
+---------------------------------------------------------------------
+
+#ParentPage
+
+cookiePopupDenyButton = "CybotCookiebotDialogBodyButtonDecline"
+
+---------------------------------------------------------------------
+
+#SettingsPage
+
+settingsItem = //span[text() = 'Settings']
+nameLastNameInput = css = ".form-text-field--disabled + label input")
+saveButton = //div[@class='user-settings__btn']
+successModal = //div[@class='cabinet-modal']
+successModalOkButton = //div[@class='cabinet-modal__btn']
 

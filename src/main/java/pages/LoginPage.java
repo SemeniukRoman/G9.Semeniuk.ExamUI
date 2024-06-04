@@ -1,7 +1,6 @@
 package pages;
 
-import data.TestData;
-import org.junit.Assert;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,7 +8,7 @@ import org.openqa.selenium.support.FindBy;
 public class LoginPage extends ParentPage {
 
     @FindBy(xpath = "//a[@class='login__link']")
-    private WebElement LoginLink;
+    private WebElement loginLink;
 
     @FindBy(xpath = "//button[@type='submit']") //ініціалізується в CommonActionsWithElements
     private WebElement buttonSignIn;
@@ -24,41 +23,27 @@ public class LoginPage extends ParentPage {
         super(webDriver);
     }
 
-    @Override
-    protected String getRelativeUrl() {
-        return "/";
-    }
-
-    public void openLoginPage() {
-        try{
-            webDriver.get("https://navi.gg/ua");
-            logger.info("Login Page was opened");
-        }catch (Exception e){
-            logger.error("Can not open Login Page" + e);
-            Assert.fail("Can not open Login Page" + e);
-        }
-    }
-
     public void enterTextIntoInputLogin(String text) {
         cleanAndEnterTextIntoElement(inputUserNameLoginForm, text);
     }
+
     public void enterTextIntoInputPassword(String text) {
         cleanAndEnterTextIntoElement(inputPasswordLoginForm, text);
     }
 
-    public void clickOnButtonSignIn(){
+    public void clickOnButtonSignIn() {
         clickOnElement(buttonSignIn);
     }
 
-    public void clickOnLoginLink(){
-        clickOnElement(LoginLink);
+    public void clickOnLoginLink() {
+        clickOnElement(loginLink);
     }
 
-    public HomePage openLoginPageAndFillLoginFormWithValidCred() {
-        openLoginPage();
-        enterTextIntoInputLogin(TestData.VALID_LOGIN_UI);
-        enterTextIntoInputPassword(TestData.VALID_PASSWORD_UI);
+    @Step("Log in")
+    public void login(String login, String pass) {
+        clickOnElement(loginLink);
+        enterTextIntoInputLogin(login);
+        enterTextIntoInputPassword(pass);
         clickOnButtonSignIn();
-        return new HomePage(webDriver);
     }
 }

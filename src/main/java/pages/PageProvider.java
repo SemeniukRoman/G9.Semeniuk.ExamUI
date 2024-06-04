@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.WebDriver;
+import pages.elements.SettingsPage;
 
 public class PageProvider {
     private WebDriver webDriver;
@@ -14,5 +15,9 @@ public class PageProvider {
 
     public HomePage getHomePage(){
         return new HomePage(webDriver);
+    }
+
+    public SettingsPage getSettingsPage(){
+        return new SettingsPage(webDriver);
     }
 }
