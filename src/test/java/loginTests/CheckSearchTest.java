@@ -5,16 +5,13 @@ import org.junit.Test;
 
 public class CheckSearchTest extends BaseTest {
 
-
     @Test
-    public void TC_005_checkSearchTest() {
+    public void TC_004_changeLanguageTest() {
         pageProvider.getHomePage().openHomePage();
         pageProvider.getLoginPage().closeCookiePopup();
 
-        pageProvider.getHomePage().getHeaderElement().checkTeamsTitleLanguage("КОМАНДА");
-        pageProvider.getHomePage().getHeaderElement().changeLanguageToEnglish();
-        pageProvider.getHomePage().getHeaderElement().checkTeamsTitleLanguage("TEAM");
+        pageProvider.getHomePage().getHeaderElement().clickSearchIcon();
+        pageProvider.getHomePage().getHeaderElement().enterSearchValue("b1t");
+        pageProvider.getHomePage().getHeaderElement().checkSearchResultsListIsVisible();
     }
-
-
 }
