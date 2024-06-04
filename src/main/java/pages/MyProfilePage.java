@@ -41,9 +41,4 @@ public class MyProfilePage extends ParentPage{
         return this;
     }
 
-    public MyProfilePage checkIsMessageSuccessDeletedPresent() {
-        Assert.assertTrue("Message 'Post Successfully Deleted' is not displayed"
-                , isElementDisplayed(postSuccessfullyDeletedMessage, "Post Successfully Deleted message"));
-        return this;
-    }
 }
