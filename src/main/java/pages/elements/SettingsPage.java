@@ -24,6 +24,10 @@ public class SettingsPage extends ParentPage {
     @FindBy(xpath = "//div[@class='cabinet-modal__btn']")
     private WebElement successModalOkButton;
 
+    @Override
+    protected String getRelativeUrl() {
+        return "/";
+    }
 
     public SettingsPage(WebDriver webDriver) {
         super(webDriver);

@@ -13,6 +13,7 @@ public class LoginTestWithPageObject extends BaseTest {
         pageProvider.getLoginPage().enterTextIntoInputLogin(TestData.VALID_LOGIN_UI);
         pageProvider.getLoginPage().enterTextIntoInputPassword(TestData.VALID_PASSWORD_UI);
         pageProvider.getLoginPage().clickOnButtonSignIn();
+        pageProvider.getHomePage().assertUserIsLoggedIn();
     }
 
     @Test
@@ -22,5 +23,7 @@ public class LoginTestWithPageObject extends BaseTest {
         pageProvider.getLoginPage().enterTextIntoInputLogin("NotValidLogin");
         pageProvider.getLoginPage().enterTextIntoInputPassword("123456qwerty");
         pageProvider.getLoginPage().clickOnButtonSignIn();
+        pageProvider.getLoginPage().assertLoginErrorMessage("These credentials do not match our records.");
+        System.out.println();
     }
 }

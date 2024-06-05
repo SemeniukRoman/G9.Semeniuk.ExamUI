@@ -1,6 +1,7 @@
 package pages;
 
 import io.qameta.allure.Step;
+import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -8,7 +9,7 @@ import org.openqa.selenium.support.FindBy;
 public class LoginPage extends ParentPage {
 
     @FindBy(xpath = "//a[@class='login__link']")
-    private WebElement loginLink;
+    private WebElement LoginLink;
 
     @FindBy(xpath = "//button[@type='submit']") //ініціалізується в CommonActionsWithElements
     private WebElement buttonSignIn;
@@ -19,8 +20,15 @@ public class LoginPage extends ParentPage {
     @FindBy(xpath = "//input[@name='password']")
     private WebElement inputPasswordLoginForm;
 
+    @FindBy(xpath = "//div[@class='Field__Error']")
+    private WebElement loginErrorMessage;
+
     public LoginPage(WebDriver webDriver) {
         super(webDriver);
+    }
+    @Override
+    protected String getRelativeUrl() {
+        return "/";
     }
 
     public void enterTextIntoInputLogin(String text) {
@@ -36,14 +44,20 @@ public class LoginPage extends ParentPage {
     }
 
     public void clickOnLoginLink() {
-        clickOnElement(loginLink);
+        clickOnElement(LoginLink);
     }
 
     @Step("Log in")
     public void login(String login, String pass) {
-        clickOnElement(loginLink);
+        clickOnElement(LoginLink);
         enterTextIntoInputLogin(login);
         enterTextIntoInputPassword(pass);
         clickOnButtonSignIn();
+    }
+
+    @Step("Assert login error message is displayed")
+    public void assertLoginErrorMessage(String expectedErrorMessage) {
+        checkElementIsDisplayed(loginErrorMessage);
+        Assert.assertEquals(expectedErrorMessage, loginErrorMessage.getText());
     }
 }

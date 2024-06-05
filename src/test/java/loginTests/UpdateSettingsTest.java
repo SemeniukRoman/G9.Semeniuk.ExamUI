@@ -16,7 +16,7 @@ public class UpdateSettingsTest extends BaseTest {
         pageProvider.getLoginPage().closeCookiePopup();
         pageProvider.getLoginPage().login(TestData.VALID_LOGIN_UI, TestData.VALID_PASSWORD_UI);
 
-        pageProvider.getHomePage().clickOnSettingsItem();
+        pageProvider.getHomePage().getHeaderElement().clickOnSettingsItem();
         pageProvider.getSettingsPage().assertPageIsOpened();
 
         pageProvider.getSettingsPage().checkNameInputValue(oldName);
